@@ -1,4 +1,4 @@
-from modules import add_contact, change_contact, show_phone, parse_input
+from modules import add_contact, change_contact, show_phone, parse_input, show_all_contact
 
 def main():
     """
@@ -30,9 +30,7 @@ def main():
             case "add": print(add_contact(args, contacts))
             case "change": print(change_contact(args, contacts))
             case "phone": print(show_phone(args, contacts))
-            case "all": 
-                for name, phone in contacts.items():
-                    print(f'{name} - {phone}')
+            case "all": print(*show_all_contact(contacts), sep='\n')
             case _: print("Invalid command.")
 
 

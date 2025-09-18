@@ -43,3 +43,11 @@ def show_phone(args: list[str], contacts: dict[str]) -> str:
         return contacts[name]
     else:
         return "There is no such contact in your contacts."
+    
+    
+def show_all_contact(contacts: dict[str]) -> list[str]:
+    """
+    функція-хендлер, яка викликається за "all" та вертає список усіх контактів
+    В якості параметрів передаються: словник.
+    """
+    return [f'{name} - {phone}' for name, phone in contacts.items()]

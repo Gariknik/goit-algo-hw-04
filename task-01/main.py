@@ -9,14 +9,16 @@ def total_salary(path: str) -> tuple[int|float]:
     """
     try:
         with open(path, 'r',encoding="utf-8") as file:
-            data = list(map(lambda x: int(x.strip().split(',')[1]), file.readlines())) #получаєм та обробляємо дані
+            data = list(map(lambda x: float(x.strip().split(',')[1]), file.readlines())) #получаєм та обробляємо дані
             total = sum(data) #Знаходимо суму заробітних плат
             average = round(total / len(data)) #Знаходимо середню заробітну плату
             return total, average
     except FileNotFoundError:
         print("Не можу знайти файл")
-
-
+        return None, None
+    except ZeroDivisionError:
+        print("Відсутні дані для обробки. Обробка винятку ділення на нуль")
+        return None, None
 
 if __name__ == "__main__":                
     total, average = total_salary("path/to/salary_file.txt")

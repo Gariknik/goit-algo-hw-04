@@ -24,7 +24,7 @@ def main():
     # Перевіряємо, чи передано аргумент
     if len(sys.argv) != 2:
         log_error("Помилка: потрібно вказати шлях до директорії!")
-        sys.exit(1)
+        return
     
     # Отримуємо шлях до директорії з аргументів
     directory_path = sys.argv[1]
@@ -37,11 +37,11 @@ def main():
     # Перевірка, чи існує вказаний шлях і чи це директорія
     if not path.exists():
         log_error(f"Помилка: вказаний шлях не існує!")
-        sys.exit(1)
+        return
     
     if not path.is_dir():
         log_error(f"Помилка: вказаний шлях не є директорією!")
-        sys.exit(1)
+        return
     
     # Виводимо структуру директорії
     print_directory_structure(path)
